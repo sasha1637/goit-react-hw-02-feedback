@@ -1,16 +1,29 @@
+import React, { Component } from 'react';
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <LoginForm onSubmit={values => console.log(values)} />
     </div>
   );
 };
+class LoginForm extends Component {
+  handleSubmit = evt => {
+    evt.preventDefault();
+    const form = evt.currentTarget;
+    const login = form.elements.login.value;
+    const password = form.elements.password.value;
+    console.log(login, password);
+    this.props.onSubmit({ login, password });
+    form.reset();
+  };
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" name="login" />
+        <input type="password" name="password" />
+        <button type="submit">Login</button>
+      </form>
+    );
+  }
+}
