@@ -3,15 +3,7 @@ import Statistics from 'components/Statistics/Statistics';
 import Section from 'components/Section/Section';
 import Notification from 'components/Notification/Notification';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
-export const App = () => {
-  return (
-    <div>
-      <Feedback />
-    </div>
-  );
-};
-
-class Feedback extends Component {
+export class App extends Component {
   state = {
     good: 0,
     neutral: 0,
@@ -36,8 +28,6 @@ class Feedback extends Component {
     const { good, neutral, bad } = this.state;
     const total = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
-    // const props = { ...this.state, total, positivePercentage }; Можно и так
-
     return (
       <>
         <Section title={'Please leave Feedback'}>
